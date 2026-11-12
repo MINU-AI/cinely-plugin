@@ -21,19 +21,26 @@ Ask only for what is missing, in one message:
   A picture works better than a description when the user has one: a public
   image link, or a character from an earlier film (`list_saved_characters`).
   Do not describe the looks of a character the user gave a picture for.
-- **The look**: call `list_styles` and offer a few styles that suit the
+- **The look**: call `list_styles` once and offer a few styles that suit the
   story, not the whole list. Entries marked `locked` are outside the
   account's plan; do not offer them.
 - **The length**: scenes are 8 seconds each. Four scenes is a good first
   film. `list_styles` gives the largest film the account can make.
+
+`list_styles` is the only call you need before the preview: it also gives
+the price per scene of each quality and the user's coin balance. The user
+is asked to allow every tool call, so do not make calls whose answer you
+already have.
 
 Leave quality, aspect ratio, genre and language at their defaults unless the
 user asks. Portrait suits phones and social apps; landscape suits YouTube.
 
 ## 2. Say what it will cost before making the preview
 
-Call `estimate_cost` with the number of scenes. Tell the user the price in
-coins and their balance in one sentence. If the balance is short, say how
+The price is the number of scenes times `coins_per_scene` of the quality
+(from `list_styles`; the account's default quality is `pro` on a premium
+plan and `standard` on a free one). Tell the user the price in coins and
+their balance (`coins`) in one sentence. If the balance is short, say how
 many scenes it covers and offer that film instead. The preview itself is
 free; the price is what approving it will charge.
 
@@ -42,13 +49,14 @@ free; the price is what approving it will charge.
 Call `create_film_preview`. For a finished script set `keep_script: true`
 and set `scenes` to the number of scenes in the script.
 
-The preview takes about a minute. Tell the user it is being prepared, then
-call `get_film`. If it still says `preview_generating`, wait for the user's
-next message rather than calling it again and again.
+The call takes up to a minute and normally answers with the finished
+preview (`state: preview_ready`). Only when it answers `preview_generating`
+do you need `get_film`: tell the user the preview is still being prepared
+and call it once, about half a minute later — not again and again.
 
 ## 4. Show the preview
 
-When `get_film` returns `preview_ready`, show:
+From the preview (`state: preview_ready`), show:
 
 - each scene in a sentence or two of your own summary, numbered — the full
   scene text is long, so quote it only when the user asks to read or edit a
@@ -95,7 +103,7 @@ user asks or comes back — not in a loop.
 
 - Do not approve a film to "save the user a step".
 - Do not invent prices, limits or plan features; they come from
-  `list_styles`, `get_account` and `estimate_cost`.
+  `list_styles` and from the preview itself.
 - If a tool answers `PROMPT_BLOCKED_…`, the story as written cannot be
   filmed. Say which kind of content was the problem and help the user
   rewrite it; do not try to get the same content through in other words.

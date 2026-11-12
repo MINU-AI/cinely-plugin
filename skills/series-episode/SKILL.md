@@ -36,9 +36,9 @@ description.
 From here it is the same as any Cinely film — follow the **short-film**
 skill from its step 2:
 
-- `estimate_cost` and tell the user the price;
+- tell the user the price (scenes times the price per scene from
+  `list_styles`);
 - `create_film_preview` with `series_id` set, and without `style_id` or
-  `genre` (the series decides them);
-- `get_film` to show the preview;
+  `genre` (the series decides them); it answers with the preview;
 - `approve_film` only after a clear yes to the price;
 - `get_film` again for the finished video.

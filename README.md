@@ -56,9 +56,8 @@ in your Cinely library, in the app and on the web.
 
 | Tool | What it does |
 | --- | --- |
-| `list_styles` | Styles, genres, qualities and limits of your account |
+| `list_styles` | Styles, genres, prices per scene, and your balance and limits |
 | `get_account` | Your plan and coin balance |
-| `estimate_cost` | The price of a film before it is made |
 | `list_saved_characters` | Characters from your earlier films |
 | `list_films`, `get_film` | Your films and the state of each one |
 | `create_film_preview` | Writes the script and prepares the cast, free |
