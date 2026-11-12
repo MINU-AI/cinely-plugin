@@ -1,0 +1,16 @@
+{
+  "name": "cinely",
+  "description": "The official Cinely plugin: the Cinely connector plus skills for making short AI films and series.",
+  "owner": {
+    "name": "Cinely",
+    "url": "https://www.cinelyai.com"
+  },
+  "plugins": [
+    {
+      "name": "cinely",
+      "displayName": "Cinely",
+      "source": "./",
+      "description": "Make short AI films and series with Cinely."
+    }
+  ]
+}

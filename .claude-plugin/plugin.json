@@ -1,0 +1,24 @@
+{
+  "name": "cinely",
+  "displayName": "Cinely",
+  "version": "0.1.0",
+  "description": "Turn a story idea into a short AI film without leaving the conversation: Cinely writes the script, casts the characters, shows a preview, and renders the film when you approve it.",
+  "icon": "./assets/logo.png",
+  "author": {
+    "name": "Cinely",
+    "url": "https://www.cinelyai.com"
+  },
+  "homepage": "https://www.cinelyai.com",
+  "repository": "https://github.com/MINU-AI/cinely-plugin",
+  "privacyPolicyUrl": "https://www.cinelyai.com/privacy",
+  "license": "MIT",
+  "keywords": [
+    "cinely",
+    "ai-video",
+    "short-film",
+    "video-generation",
+    "storytelling",
+    "mcp",
+    "agent-skills"
+  ]
+}
