@@ -35,16 +35,17 @@ more.
 | `list_saved_characters` | true | false | false | Reads characters from the user's own earlier films. |
 | `list_films` | true | false | false | Reads the user's own films. |
 | `get_film` | true | false | false | Reads one of the user's own films: preview, render state or finished video. |
-| `create_film_preview` | false | false | false | Creates a free draft in the user's Cinely account. Nothing is charged; the draft can be discarded. |
-| `update_preview_scene` | false | false | false | Rewrites one scene of an unapproved draft. Free; can be rewritten again. |
-| `update_preview_character` | false | false | false | Renames a character of an unapproved draft or changes its picture. Free. |
+| `create_film_preview` | false | false | false | Creates a free draft in the user's Cinely account. Nothing is charged; the draft can be discarded. It takes text, and pictures only from the user's own Cinely account; a link to anywhere else is refused (`IMAGE_URL_NOT_IN_ACCOUNT`). |
+| `update_preview_scene` | false | true | false | Overwrites the text of one scene of an unapproved draft; the earlier text is not kept. Free. |
+| `update_preview_character` | false | true | true | Renames a character of an unapproved draft or replaces its picture. A picture given as a link is downloaded from that public address and copied into the user's account. Free. |
 | `create_share_link` | false | false | true | Makes a public watch page for a finished film; anyone with the link can view it. The user can revoke the link in Cinely. |
 | `approve_film` | false | true | false | Spends the user's Cinely coins and starts a render that cannot be cancelled. Safeguards: the call must carry the exact price the user was shown and is refused if it differs; nothing is charged when the balance is short. |
 | `discard_preview` | false | true | false | Permanently deletes an unapproved draft. No coins are involved. |
 
-All tools act only inside the signed-in user's Cinely account. None reaches
-the public internet on the user's behalf except `create_share_link`, which
-publishes a page.
+All tools act only inside the signed-in user's Cinely account. Two reach
+the public internet on the user's behalf: `create_share_link`, which
+publishes a page, and `update_preview_character`, which downloads a picture
+from a link the user gives.
 
 ## Positive test cases
 
@@ -60,7 +61,7 @@ Run each in a new conversation with Cinely selected.
 
 - Prompt (after case 1): `Change scene 2 so Miu jumps back in surprise when a snowflake lands on her nose.`
 - Expected tools: `update_preview_scene`
-- Expected result: The assistant confirms scene 2 was rewritten and that the preview is still free. Asking to see the film again shows the new scene 2.
+- Expected result: ChatGPT may ask for confirmation first (the tool overwrites the scene). The assistant confirms scene 2 was rewritten and that the preview is still free. Asking to see the film again shows the new scene 2.
 
 **3. Approve and render**
 

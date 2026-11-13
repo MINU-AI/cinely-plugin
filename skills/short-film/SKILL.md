@@ -18,9 +18,12 @@ Ask only for what is missing, in one message:
   a one-line idea into a plot of your own before sending it. If they give a
   finished script, it is filmed as written (see `keep_script` below).
 - **The characters**: a name and gender for each, and how each one looks.
-  A picture works better than a description when the user has one: a public
-  image link, or a character from an earlier film (`list_saved_characters`).
-  Do not describe the looks of a character the user gave a picture for.
+  A character from an earlier film (`list_saved_characters`) is cast again
+  by its `image_url`; do not describe the looks of a character cast that
+  way. For a picture the user has as a public image link, start the preview
+  with a short description of the character and then give the link to
+  `update_preview_character`: a new film takes only pictures already in the
+  user's Cinely account.
 - **The look**: call `list_styles` once and offer a few styles that suit the
   story, not the whole list. Entries marked `locked` are outside the
   account's plan; do not offer them.
@@ -67,8 +70,9 @@ From the preview (`state: preview_ready`), show:
 Ask whether to make the film or change something first.
 
 Changes are free: `update_preview_scene` rewrites one scene (send the whole
-new text of the scene, keeping its SETTING / SHOT layout),
-`update_preview_character` renames a character, gives it another picture or
+new text of the scene, keeping its SETTING / SHOT layout; the text it had
+is not kept), `update_preview_character` renames a character, gives it
+another picture (a public image link, or a saved character's `image_url`) or
 redraws its portrait. To change the story, the style or the number of
 scenes, `discard_preview` and make a new preview.
 

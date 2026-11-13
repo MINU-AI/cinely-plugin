@@ -28,8 +28,9 @@ up where they ended.
 Keep the cast unless the user wants a change. To keep it, leave `characters`
 out of the call. To add or replace someone, send the whole cast you want in
 this episode: the returning characters with the `image_url` they already
-have (from `list_saved_characters`), and the new one with a picture or a
-description.
+have (from `list_saved_characters`), and the new one with a description
+(a picture at a public link is given afterwards, to
+`update_preview_character`).
 
 ## 3. Price, preview, approval, delivery
 
