@@ -1,0 +1,40 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cinely",
+  "version": "0.1.0",
+  "description": "Turn a story idea into a short AI film without leaving the conversation: Cinely writes the script, casts the characters, shows a preview, and renders the film when you approve it.",
+  "author": {
+    "name": "Cinely",
+    "email": "support@cinelyai.com",
+    "url": "https://www.cinelyai.com"
+  },
+  "homepage": "https://www.cinelyai.com",
+  "repository": "https://github.com/MINU-AI/cinely-plugin",
+  "license": "MIT",
+  "keywords": ["cinely", "ai-video", "short-film", "video-generation", "storytelling"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Cinely",
+        "shortDescription": "Make short AI films in chat",
+        "longDescription": "Cinely turns a story idea into a short film with consistent characters, voices and scenes.\n\nDescribe the story and who is in it. Cinely writes the script and prepares each character, then shows you a preview in the conversation: every scene, every face, and what the film will use from your Cinely balance. Nothing is made until you approve it. Change a scene or a character first if you like. When you approve, the film is rendered in a few minutes and plays right in the chat; it is also saved to your Cinely library on the web and in the app.\n\nYou can also continue a film as a series: the next episode keeps the same look and the same cast.\n\nYou sign in with your Cinely account. Films, saved characters and balance are the same ones you see in the Cinely app.",
+        "developerName": "MINU PTE. LTD.",
+        "category": "Creativity",
+        "capabilities": ["Video generation", "Scriptwriting", "Character portraits"],
+        "websiteURL": "https://www.cinelyai.com",
+        "privacyPolicyURL": "https://www.cinelyai.com/privacy",
+        "termsOfServiceURL": "https://www.cinelyai.com/terms",
+        "supportURL": "https://www.cinelyai.com/contact",
+        "defaultPrompt": [
+          "Make a 4-scene short film about a lighthouse keeper who finds a message in a bottle",
+          "Show me my Cinely films",
+          "Add a second episode to my latest Cinely film"
+        ],
+        "brandColor": "#7C3AED",
+        "brandColorDark": "#A78BFA",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
+}
