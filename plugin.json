@@ -11,7 +11,13 @@
   "homepage": "https://www.cinelyai.com",
   "repository": "https://github.com/MINU-AI/cinely-plugin",
   "license": "MIT",
-  "keywords": ["cinely", "ai-video", "short-film", "video-generation", "storytelling"],
+  "keywords": [
+    "cinely",
+    "ai-video",
+    "short-film",
+    "video-generation",
+    "storytelling"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
@@ -20,7 +26,11 @@
         "longDescription": "Cinely turns a story idea into a short film with consistent characters, voices and scenes.\n\nDescribe the story and who is in it. Cinely writes the script and prepares each character, then shows you a preview in the conversation: every scene, every face, and what the film will use from your Cinely balance. Nothing is made until you approve it. Change a scene or a character first if you like. When you approve, the film is rendered in a few minutes and plays right in the chat; it is also saved to your Cinely library on the web and in the app.\n\nYou can also continue a film as a series: the next episode keeps the same look and the same cast.\n\nYou sign in with your Cinely account. Films, saved characters and balance are the same ones you see in the Cinely app.",
         "developerName": "MINU PTE. LTD.",
         "category": "Creativity",
-        "capabilities": ["Video generation", "Scriptwriting", "Character portraits"],
+        "capabilities": [
+          "Video generation",
+          "Scriptwriting",
+          "Character portraits"
+        ],
         "websiteURL": "https://www.cinelyai.com",
         "privacyPolicyURL": "https://www.cinelyai.com/privacy",
         "termsOfServiceURL": "https://www.cinelyai.com/terms",
@@ -34,6 +44,61 @@
         "brandColorDark": "#A78BFA",
         "composerIcon": "./assets/icon.png",
         "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Plan and preview a film",
+              "prompt": "Make a 2-scene short film in an animated style about an orange cat named Miu who sees snow for the first time. Miu is a fluffy orange cat with blue eyes.",
+              "tools_triggered": "list_styles, create_film_preview",
+              "expected_behavior": "A Cinely film card appears. Within about a minute it shows two scenes, the character Miu with a drawn portrait, the price in coins, the account's balance and an approve button. The assistant says nothing has been charged."
+            },
+            {
+              "description": "Preview a film, then rewrite one scene",
+              "prompt": "Make a 2-scene animated short film about a small blue robot named Bolt who learns to paint. Bolt is a small round blue robot with one big eye. When the preview is ready, change scene 2 so Bolt paints a sunflower.",
+              "tools_triggered": "list_styles, create_film_preview, update_preview_scene",
+              "expected_behavior": "A preview with two scenes and the character Bolt is created at no charge. Scene 2 is then rewritten so Bolt paints a sunflower; ChatGPT may ask for confirmation before the rewrite. The assistant confirms the change and that the preview is still free."
+            },
+            {
+              "description": "Approve the preview from the first case and render the film",
+              "prompt": "Approve my latest Cinely film preview and render it.",
+              "tools_triggered": "list_films, get_film, approve_film",
+              "expected_behavior": "Run after the first case. The assistant finds the preview and states its price. ChatGPT asks for confirmation before approve_film. After confirming, that number of coins is taken from the account's Cinely balance and the card shows the film rendering; a few minutes later the card plays the finished video. The approve button on the card does the same."
+            },
+            {
+              "description": "Find earlier films and play one",
+              "prompt": "Show me my Cinely films and play the most recent finished one.",
+              "tools_triggered": "list_films, get_film",
+              "expected_behavior": "A short list of the account's films with their states, and a card that plays the latest finished film in the conversation."
+            },
+            {
+              "description": "Check the balance and limits",
+              "prompt": "How many Cinely coins do I have, and how long a film can I make?",
+              "tools_triggered": "get_account, list_styles",
+              "expected_behavior": "The balance in coins, the plan, and the largest number of scenes the account can make. No prices of coin packs and no purchase link."
+            }
+          ],
+          "negative": [
+            {
+              "description": "A request that has nothing to do with making a film",
+              "prompt": "What's the weather in Singapore this weekend?"
+            },
+            {
+              "description": "Editing a video the user already has, which Cinely does not do",
+              "prompt": "Trim the first 10 seconds off the MP4 I attached and add English subtitles."
+            },
+            {
+              "description": "A general question about filmmaking that needs no film to be made",
+              "prompt": "Explain the three-act structure used in screenwriting."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "The plugin sells nothing and processes no payment. Rendering a film uses coins already in the user's Cinely account, and only after the user approves the amount shown. Coins cannot be bought through the plugin; it shows no coin-pack prices and no checkout links."
+      },
+      "publication": {
+        "release_notes": "First release. Make a short film from a story idea: a free preview with the script, the characters and the price; approval that uses the coins of your Cinely account; the finished video in the conversation. Continue a film as a series. See earlier films, saved characters and the coin balance."
       }
     }
   }
