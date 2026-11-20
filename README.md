@@ -36,7 +36,10 @@ The plugin has two parts:
 
 **Free Claude plan, or any other MCP client:** add
 `https://mcp.cinelyai.com/mcp` as a custom connector. You get the same
-tools without the skills.
+tools without the skills. In Claude,
+[this link](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Cinely&connectorUrl=https%3A%2F%2Fmcp.cinelyai.com%2Fmcp)
+opens **Add custom connector** with the name and the address filled in:
+press **Continue**, then sign in with your Cinely account.
 
 ## Use it
 
