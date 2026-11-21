@@ -1,8 +1,8 @@
 {
   "name": "cinely",
   "displayName": "Cinely",
-  "version": "0.1.0",
-  "description": "Turn a story idea into a short AI film without leaving the conversation: Cinely writes the script, casts the characters, shows a preview, and renders the film when you approve it.",
+  "version": "0.2.0",
+  "description": "Turn a story idea into a short AI film without leaving the conversation: Cinely writes the script, casts the characters, shows a preview, and renders the film when you approve it. It also writes songs and makes music videos for them.",
   "icon": "./assets/logo.png",
   "author": {
     "name": "Cinely",
@@ -19,6 +19,8 @@
     "video-generation",
     "storytelling",
     "mcp",
-    "agent-skills"
+    "agent-skills",
+    "music-video",
+    "song"
   ]
 }

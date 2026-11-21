@@ -7,6 +7,9 @@ cd "$(dirname "$0")/.."
 OUT=dist/cinely-chatgpt-plugin.zip
 mkdir -p dist && rm -f "$OUT"
 for f in plugin.json mcp.json; do python3 -m json.tool "$f" > /dev/null; done
-zip -q -r -X "$OUT" plugin.json mcp.json skills assets -x '*.DS_Store'
+# The music-video skill speaks of tools ChatGPT is not shown yet (the
+# connector offers them to Claude alone while OpenAI reviews the plugin):
+# it joins this archive when MCP_MUSIC_HOSTS on the server names chatgpt.
+zip -q -r -X "$OUT" plugin.json mcp.json skills assets -x '*.DS_Store' -x 'skills/music-video/*'
 unzip -l "$OUT" | tail -n +4 | awk '{print $4}' | grep -v '^$' | sed '$d'
 echo "$OUT  $(du -k "$OUT" | cut -f1) KB"

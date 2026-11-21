@@ -68,6 +68,8 @@ in your Cinely library, in the app and on the web.
 | `approve_film` | Charges the coins and renders the film |
 | `discard_preview` | Deletes a preview you do not want |
 | `create_share_link` | Makes a public page for a finished film |
+| `create_song`, `list_songs` | Writes and records a song (two takes, free); your songs. In Claude for now |
+| `create_music_video_preview` | Plans a music video for one of your songs and writes its scenes, free. In Claude for now |
 
 ## Coins
 
