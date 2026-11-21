@@ -26,11 +26,12 @@ artist to imitate: describe the sound instead.
 It returns either the takes (`state: song_ready`) or `song_generating` with
 a `generation_id`. A song takes a minute or two. Where the Cinely card is
 shown it waits and plays the takes itself: say the song is on its way and
-do not poll. Without a card, call `list_songs` with the `generation_id`
-when the user asks.
+end your turn there, without waiting or calling `list_songs` (that shows
+the song a second time). Without a card, call `list_songs` with the
+`generation_id` when the user asks.
 
-There are two takes of the same song. Let the user listen and choose one;
-each has its own `song_id`. If neither is right, a new `create_song` with a
+There are usually two takes of the same song, now and then one. Let the
+user listen and choose; each has its own `song_id`. If neither is right, a new `create_song` with a
 changed description makes two more, within the account's songs for the day.
 
 A song already in the account (made earlier, or uploaded in the app) is
